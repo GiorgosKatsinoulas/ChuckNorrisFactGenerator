@@ -1,0 +1,23 @@
+﻿@model ChuckNorrisApplication.Models.ChuckNorris 
+ 
+
+
+    <form method="post">
+        <div class="form-group">
+            @Html.HiddenFor(model => model.Id)
+            @Html.HiddenFor(model => model.Value)
+            @Html.HiddenFor(model => model.PkId)
+        </div>
+        <div class="container">
+            <div>
+                <p class="border-success">@Model.Value</p>
+
+            </div>
+            <div>
+                <button type="submit" asp-controller="Random" asp-action="Save" class="btn btn-success">Save</button>
+                <a asp-controller="Random" asp-action="Index" class="btn btn-primary">Refresh</a>
+                <a asp-controller="Random" asp-action="Save" class="btn btn-primary">Show List</a>
+            </div>
+        </div>
+    </form>
+

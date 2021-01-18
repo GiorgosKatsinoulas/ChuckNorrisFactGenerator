@@ -1,0 +1,37 @@
+﻿@model IEnumerable<ChuckNorrisApplication.Models.ChuckNorris>
+
+@{
+    ViewData["Title"] = "List of Chuck Norris facts! ";
+}
+<div class="container">
+    <h1>List of Chuck Norris facts!</h1>
+
+    <p>
+        <a class="btn btn-primary" asp-controller="Random" asp-action="Index">New Fact</a>
+        <a class="btn btn-danger" asp-controller="Random" asp-action="DeleteAll">Delete All</a>
+    </p>
+    <table class="table table-striped ">
+        <thead>
+            <tr>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.Value)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td scope="row">
+                        @Html.DisplayFor(modelItem => item.Value)
+                    </td>
+                    <td scope="row">
+
+                        @Html.ActionLink("Delete", "Delete", "Random", new { id = item.Id }, new { @class = "btn btn-danger" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
